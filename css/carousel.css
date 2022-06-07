@@ -88,8 +88,9 @@
     scroll-behavior: smooth;
 }
 .carousel__container__items__item__content:hover {
-    overflow: scroll;
+    overflow-y: scroll;
 }
+
 @media (max-width: 768px) {
     .carousel__container__items__item__content {
         padding: 1rem;
