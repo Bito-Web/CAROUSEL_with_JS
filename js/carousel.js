@@ -122,5 +122,5 @@ function responsive() {
         carousel_container.onclick = (e) => mouseDirection(e);
     }
 }
+responsive();
 /* ----- Events ------ */
-window.onresize = () => responsive();
