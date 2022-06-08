@@ -123,4 +123,4 @@ function responsive() {
     }
 }
 /* ----- Events ------ */
-window.onresize = responsive();
+window.onresize = () => responsive();
