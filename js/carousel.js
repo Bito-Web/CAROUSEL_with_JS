@@ -117,9 +117,9 @@ function mouseDirection(e) {
 if (!mobile) {
     prev_arrow.onclick = () => prevSlide();
     next_arrow.onclick = () => nextSlide();
-    arrows.classList.toggle('hidden');
+    arrows.classList.remove('hidden');
 }else{
     carousel_container.onclick = (e) => mouseDirection(e);
-    arrows.classList.toggle('hidden');
+    arrows.classList.add('hidden');
 }
 
