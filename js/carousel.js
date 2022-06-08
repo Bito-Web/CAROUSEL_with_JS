@@ -1,5 +1,9 @@
-/* ----- Variables ------ */
+/* Parameters */ 
 let slidePosition = 0;
+let speedTransition = 5000;
+let autoPlaySlides = true;
+
+/* ----- Variables ------ */
 const deviceWidth = window.innerWidth;
 const carousel = document.querySelector('.carousel');
 const carousel_container = document.querySelector('.carousel__container');
@@ -95,12 +99,24 @@ function prevSlide() {
 }
 
 function autoPlay() {
-    let setPlay;
+    let setPlay = setInterval(nextSlide, speedTransition);
 
-    carousel_container.onmouseleave = () => setPlay = setInterval(nextSlide, 5000);
-    carousel_container.onmouseenter = () => clearInterval(setPlay);
+    if (autoPlaySlides == true) {
+        carousel_container.onmouseleave = () => setPlay = setInterval(nextSlide, speedTransition);
+        carousel_container.onmouseenter = () => { clearInterval(setPlay); keyboardEvent() };
+    }
 }
 autoPlay();
+
+function keyboardEvent() {
+    window.onkeyup = (e) => {
+        if (e.key == 'ArrowLeft') {
+            prevSlide();
+        }else if (e.key == 'ArrowRight') {
+            nextSlide();
+        }
+    }
+}
 
 function mouseDirection(e) {
     mobile;

@@ -80,15 +80,12 @@
     width: 70%;
     height: max-content;
     max-height: 40vh;
-    overflow-y: hidden;
+    overflow-y: auto;
     color: white;
     background-color: rgba(0,0,0,0.4);
     border-radius: 0.5rem;
     z-index: 3;
     scroll-behavior: smooth;
-}
-.carousel__container__items__item__content:hover {
-    overflow-y: scroll;
 }
 
 @media (max-width: 768px) {
@@ -164,6 +161,20 @@
 }
 .carousel__container__arrows.hidden {
     display: none;
+}
+.carousel__container__items__item__content::-webkit-scrollbar {
+    width: 12px;
+  }
+.carousel__container__items__item__content::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background: transparent;
+}
+.carousel__container__items__item__content::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background: rgba(0,0,0,1);
+}
+.carousel__container__items__item__content::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,0.5);
 }
 @media (max-width: 768px) {
     .carousel__container__arrows {
