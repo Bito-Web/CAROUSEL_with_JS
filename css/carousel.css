@@ -165,6 +165,11 @@
 .carousel__container__arrows.hidden {
     display: none;
 }
+@media (max-width: 768px) {
+    .carousel__container__arrows {
+        display: none;
+    }
+}
 .carousel__container__arrows__prev,
 .carousel__container__arrows__next {
     width: 4rem;

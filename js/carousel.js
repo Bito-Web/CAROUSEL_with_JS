@@ -113,13 +113,14 @@ function mouseDirection(e) {
     }
 }
 
-/* ----- Events ------ */
-if (!mobile) {
-    prev_arrow.onclick = () => prevSlide();
-    next_arrow.onclick = () => nextSlide();
-    arrows.classList.remove('hidden');
-}else{
-    carousel_container.onclick = (e) => mouseDirection(e);
-    arrows.classList.add('hidden');
+function responsive() {
+    mobile;
+    if (!mobile) {
+        prev_arrow.onclick = () => prevSlide();
+        next_arrow.onclick = () => nextSlide();
+    }else{
+        carousel_container.onclick = (e) => mouseDirection(e);
+    }
 }
-
+/* ----- Events ------ */
+window.onresize = responsive();
