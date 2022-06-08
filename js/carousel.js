@@ -25,7 +25,7 @@ function createDots() {
 }
 function createArrows() {
     const div = document.createElement('div');
-    div.setAttribute('class', 'carousel__container__buttons');
+    div.setAttribute('class', 'carousel__container__arrows');
     carousel_container.appendChild(div);
 
     const left_arrow = document.createElement('button');
