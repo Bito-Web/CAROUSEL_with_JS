@@ -67,8 +67,6 @@ function dotEvent() {
         })
     }
 }
-dotEvent();
-
 function updateSlideToShow() {
     for (let slide of slides) {
         slide.classList.remove('active');
@@ -79,7 +77,6 @@ function updateSlideToShow() {
     slides[slidePosition].classList.add('active')
     dots[slidePosition].classList.add('active')
 }
-
 function nextSlide() {
     if (slidePosition === totalSlides - 1) {
         slidePosition = 0;
@@ -88,7 +85,6 @@ function nextSlide() {
     }
     updateSlideToShow();
 }
-
 function prevSlide() {
     if (slidePosition === 0) {
         slidePosition = totalSlides - 1;
@@ -97,27 +93,38 @@ function prevSlide() {
     }
     updateSlideToShow();
 }
-
-function autoPlay() {
-    let setPlay = setInterval(nextSlide, speedTransition);
-
-    if (autoPlaySlides == true) {
-        carousel_container.onmouseleave = () => setPlay = setInterval(nextSlide, speedTransition);
-        carousel_container.onmouseenter = () => { clearInterval(setPlay); keyboardEvent() };
-    }
-}
-autoPlay();
-
 function keyboardEvent() {
-    window.onkeyup = (e) => {
-        if (e.key == 'ArrowLeft') {
-            prevSlide();
-        }else if (e.key == 'ArrowRight') {
-            nextSlide();
+    if (!mobile) {
+        window.onkeyup = (e) => {
+            if (e.key == 'ArrowLeft') {
+                prevSlide();
+            }else if (e.key == 'ArrowRight') {
+                nextSlide();
+            }else if (e.key == 'ArrowUp') {
+                nextSlide();
+            }else if (e.key == 'ArrowDown') {
+                prevSlide();
+            }
         }
     }
 }
-
+function autoPlay() {
+    let setPlay;
+    
+    if (autoPlaySlides == true) {
+        console.log('AutoPlay = true')
+        carousel_container.onmouseleave = () => setPlay = setInterval(nextSlide, speedTransition);
+        carousel_container.onmouseenter = () => {
+            clearInterval(setPlay)
+            keyboardEvent();
+        };
+    }else {
+        carousel_container.onmouseenter = () => {
+            clearInterval(setPlay)
+            keyboardEvent();
+        };
+    }
+}
 function mouseDirection(e) {
     mobile;
     let windowWidth = deviceWidth / 2;
@@ -128,9 +135,10 @@ function mouseDirection(e) {
         prevSlide();
     }
 }
-
 function responsive() {
     mobile;
+    autoPlay();
+    dotEvent();
     if (!mobile) {
         prev_arrow.onclick = () => prevSlide();
         next_arrow.onclick = () => nextSlide();
