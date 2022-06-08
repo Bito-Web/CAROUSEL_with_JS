@@ -46,6 +46,7 @@ createArrows();
 createDots();
 
 /* ----- Variables ------ */
+const arrows = document.querySelector('.carousel__container__arrows');
 const prev_arrow = document.querySelector('.carousel__container__arrows__prev');
 const next_arrow = document.querySelector('.carousel__container__arrows__next');
 const dots_container = document.querySelector('.carousel__dots');
@@ -116,7 +117,9 @@ function mouseDirection(e) {
 if (!mobile) {
     prev_arrow.onclick = () => prevSlide();
     next_arrow.onclick = () => nextSlide();
+    arrows.classList.toggle('hidden');
 }else{
     carousel_container.onclick = (e) => mouseDirection(e);
+    arrows.classList.toggle('hidden');
 }
 
